@@ -2,6 +2,7 @@ class UsersController < ApplicationController
 
     def sign_in
         user = User.find_by(username: params[:username])
+        byebug
 
         if user && user.authenticate(params[:password])
             render json: { username: user.username, token: generate_token( {id: user.id}) }
@@ -19,6 +20,21 @@ class UsersController < ApplicationController
         else
           # Otherwise, send back an error
           render json: { error: "You are not authorized" }
+        end
+    end
+
+    def signup
+        user = User.create(
+            username: params[:username],
+            password: params[:password],
+            full_name: params[:full_name],
+            email: params[:email],
+        )
+
+        if user
+            render json: { message: "Success!"}
+        else
+            render json: { error: "Please fill out the form as required" }
         end
     end
 
