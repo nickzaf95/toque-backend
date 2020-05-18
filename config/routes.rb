@@ -7,4 +7,5 @@ Rails.application.routes.draw do
   post "/sign-in", to: "users#sign_in"
   get "/validate", to: "users#validate"
   post "/sign-up", to: "users#signup"
+  post "/create-family", to: "families#create_family"
 end
