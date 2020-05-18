@@ -12,6 +12,9 @@
 
 ActiveRecord::Schema.define(version: 2020_05_14_145008) do
 
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "families", force: :cascade do |t|
     t.string "name"
     t.datetime "created_at", precision: 6, null: false
@@ -19,8 +22,8 @@ ActiveRecord::Schema.define(version: 2020_05_14_145008) do
   end
 
   create_table "inclusions", force: :cascade do |t|
-    t.integer "family_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "family_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.index ["family_id"], name: "index_inclusions_on_family_id"
@@ -28,7 +31,7 @@ ActiveRecord::Schema.define(version: 2020_05_14_145008) do
   end
 
   create_table "recipes", force: :cascade do |t|
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "name"
     t.string "image"
     t.string "video"
