@@ -9,4 +9,5 @@ Rails.application.routes.draw do
   post "/sign-up", to: "users#signup"
   post "/create-family", to: "families#create_family"
   post "/create-recipe", to: "recipes#create_recipe"
+  get "/families", to: "families#index"
 end

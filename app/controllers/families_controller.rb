@@ -13,4 +13,16 @@ class FamiliesController < ApplicationController
         end
     end
 
+    def index
+        user = get_user
+
+        families = user.families
+
+        if user
+            render json: { families: families }
+        else 
+            render json: { message: "No User found."}
+        end
+    end
+
 end
