@@ -10,4 +10,5 @@ Rails.application.routes.draw do
   post "/create-family", to: "families#create_family"
   post "/create-recipe", to: "recipes#create_recipe"
   get "/families", to: "families#index"
+  post "/join-family", to: "families#join"
 end

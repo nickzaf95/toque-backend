@@ -25,4 +25,28 @@ class RecipesController < ApplicationController
         end
     end
 
+    def index
+        user = get_user
+
+        recipes = user.recipes
+
+        if user
+            render json: { recipes: recipes }
+        else 
+            render json: { message: "No User found."}
+        end
+    end
+
+    # def show
+    #     recipes = Family.find_by(id: params[:id])
+
+    #     recipes = recipes.recipes
+
+    #     if recipes
+    #         render json: { recipes: recipes}
+    #     else
+    #         render json: { message: "No recipes found."}
+    #     end
+    # end
+
 end
