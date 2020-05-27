@@ -30,10 +30,10 @@ class UsersController < ApplicationController
             email: params[:email],
         )
 
-        if user
+        if User.find_by(username: user.username)
             render json: { message: "Success!"}
         else
-            render json: { error: "Please fill out the form as required" }
+            render json: { message: "Please fill out the form as required" }
         end
     end
 
